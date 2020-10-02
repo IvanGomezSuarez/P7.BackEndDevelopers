@@ -21,10 +21,13 @@
 				<a>User</a> 
 				<a>ejemplo@gmail.com</a> 
 				<div class="dropdown-divider"></div>
-				<a class="dropdown-item">Salir</a>
+				<a href="index.jsp" class="dropdown-item">Salir</a>
 			</div>
 		</div>
 	</nav>
+	<div class="container mt-4">
+	<h1>Bienvenido a la aplicación de BackEndDevelopers.....<strong>Usuario:</strong></h1>
+	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
