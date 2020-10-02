@@ -16,8 +16,12 @@
 			class="navbar-toggler-icon"></span>Home</a>
 		<div class="dropdown">
 			<a style="color: white" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> Cerrar Sesion</a>
-			<div>
-				<a></a> <a></a> <a></a> <a></a> <a></a>
+			<div class="dropdown-menu text-center">
+				<a><img src="img/user.png" height="70" width="70"></a><br> 
+				<a>User</a> 
+				<a>ejemplo@gmail.com</a> 
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item">Salir</a>
 			</div>
 		</div>
 	</nav>
