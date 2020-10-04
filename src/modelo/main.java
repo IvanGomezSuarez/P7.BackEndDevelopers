@@ -1,4 +1,7 @@
 package modelo;
+import java.util.Hashtable;
+
+import javax.naming.Context;
 import javax.naming.NamingException;
 import javax.naming.directory.Attribute;
 
@@ -7,30 +10,14 @@ public class main {
 
     public static void main(String[] args) throws NamingException{
         System.out.println("Iniciando Autenticacion");
-         
-        String server="ldap://0.0.0.0:10389"; // servidor de LDAP
-        String usuario="example"; // Usuario de Autenticacion
-        String dn="uid=" + usuario + ",ou=,dc=com"; // Ruta del Arbol LDAP
-        String tipoAth="simple";//tipo de autentuicacion simple o por SSL
-        String clave="clave";
- 
-        LDAPConection ldapAuth=new LDAPConection(server,dn,tipoAth,usuario,clave);
- 
-        if(ldapAuth.isAutenticado()){
-            System.out.println("Usuario "+ldapAuth.getUsuario()+" Autenticado Correctamente");
-            
-            /* obtenemos una Propiedad de la autenticacion
-             *
-             * Algunas Propiedades Disponibles
-             * mailLocalAddress,displayName,givenName,objectClass,userPassword,sambaLogonTime,mail
-             * uid,uidNumber,cn,loginShell,gidNumber,gecos,sambaSID,homeDirectory
-             */
-            Attribute atr=ldapAuth.cargarPropiedadConexion("mail");
-            System.out.println("1. Atributo "+atr.getID());
-            System.out.println("1. Valor "+atr.get().toString());
-        }
-        else{
-            System.out.println("Usuario "+ldapAuth.getUsuario()+" No se Puedo Autenticar");
-        }
-    }
+
+
+        Hashtable<String, String> env = new Hashtable<>();
+        env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+        env.put(Context.PROVIDER_URL, "ldap://127.0.0.1:10389");
+        env.put(Context.SECURITY_AUTHENTICATION, "simple");
+        env.put(Context.SECURITY_PRINCIPAL, "uid=admin,ou=system");
+        env.put(Context.SECURITY_CREDENTIALS, "secret");
+        System.out.println("success");
+}
 }
