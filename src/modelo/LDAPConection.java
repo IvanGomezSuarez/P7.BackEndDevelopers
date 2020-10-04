@@ -1,118 +1,105 @@
 package modelo;
-
-public class LDAPConection {
-
-
-import static javax.naming.directory.SearchControls.SUBTREE_SCOPE;
-
-import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.naming.AuthenticationException;
 import javax.naming.Context;
-import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.naming.directory.Attribute;
 import javax.naming.directory.Attributes;
 import javax.naming.directory.DirContext;
-import javax.naming.directory.SearchControls;
-import javax.naming.directory.SearchResult;
-
-import com.sun.jndi.ldap.LdapCtxFactory;
-
-
-
-
-       public static void main(String[] args) {
-
-           if (args.length != 4 && args.length != 2) {
-               System.out.println("Purpose: authenticate user against Active Directory and list group membership.");
-               System.out.println("Usage: App2 <username> <password> <domain> <server>");
-               System.out.println("Short usage: App2 <username> <password>");
-               System.out.println("(short usage assumes 'xyz.tld' as domain and 'abc' as server)");
-               System.exit(1);
-           }
-
-           String domainName;
-           String serverName;
-
-           if (args.length == 4) {
-               domainName = args[2];
-               serverName = args[3];
-           } else {
-               domainName = "xyz.tld";
-               serverName = "abc";
-           }
-
-           String username = args[0];
-           String password = args[1];
-
-           System.out
-                   .println("Authenticating " + username + "@" + domainName + " through " + serverName + "." + domainName);
-
-           // bind by using the specified username/password
-           Hashtable props = new Hashtable();
-           String principalName = username + "@" + domainName;
-           props.put(Context.SECURITY_PRINCIPAL, principalName);
-           props.put(Context.SECURITY_CREDENTIALS, password);
-           DirContext context;
-
-           try {
-               context = LdapCtxFactory.getLdapCtxInstance("ldap://" + serverName + "." + domainName + '/', props);
-               System.out.println("Authentication succeeded!");
-
-               // locate this user's record
-               SearchControls controls = new SearchControls();
-               controls.setSearchScope(SUBTREE_SCOPE);
-               NamingEnumeration<SearchResult> renum = context.search(toDC(domainName),
-                       "(& (userPrincipalName=" + principalName + ")(objectClass=user))", controls);
-               if (!renum.hasMore()) {
-                   System.out.println("Cannot locate user information for " + username);
-                   System.exit(1);
-               }
-               SearchResult result = renum.next();
-
-               List<String> groups = new ArrayList<String>();
-               Attribute memberOf = result.getAttributes().get("memberOf");
-               if (memberOf != null) {// null if this user belongs to no group at all
-                   for (int i = 0; i < memberOf.size(); i++) {
-                       Attributes atts = context.getAttributes(memberOf.get(i).toString(), new String[] { "CN" });
-                       Attribute att = atts.get("CN");
-                       groups.add(att.get().toString());
-                   }
-               }
-
-               context.close();
-
-               System.out.println();
-               System.out.println("User belongs to: ");
-               Iterator ig = groups.iterator();
-               while (ig.hasNext()) {
-                   System.out.println("   " + ig.next());
-               }
-
-           } catch (AuthenticationException a) {
-               System.out.println("Authentication failed: " + a);
-               System.exit(1);
-           } catch (NamingException e) {
-               System.out.println("Failed to bind to LDAP / get account information: " + e);
-               System.exit(1);
-           }
-       }
-
-       private static String toDC(String domainName) {
-           StringBuilder buf = new StringBuilder();
-           for (String token : domainName.split("\\.")) {
-               if (token.length() == 0)
-                   continue; // defensive check
-               if (buf.length() > 0)
-                   buf.append(",");
-               buf.append("DC=").append(token);
-           }
-           return buf.toString();
-       }
-
+import javax.naming.directory.InitialDirContext;
+ 
+/**
+ * Contiene la Funcionalidad de Autenticacion
+ * y busquede de atributos de un usuario en el LDAP
+ *
+ * @author  Jairo Andres Rivera Rodriguez
+ * @since   1.5
+ * @version 1.0
+ */
+public final class LDAPConection {
+ 
+    private String usuario;
+    private String clave;
+    private String servidor;
+    private String dn;
+    private String tipoAuth;
+    private boolean autenticado;
+     
+    DirContext dc;
+ 
+    /**
+     * Constructor de la conexion con el Motor de LDAP
+     *
+     * @param server  Servidor en donde se encuentra el LDAP
+     * @param dn      Directoria del arbol del LDAP
+     * @param ta      Tipo de Autenticacion
+     * @param usuario Usuario que desea realizar la conexion
+     * @param clave   Clave del usuario
+     *
+     */
+    public LDAPConection(String server, String dn, String ta,String usuario,String clave) {
+        this.servidor = server;
+        this.dn = dn;
+        this.tipoAuth = ta;
+        this.usuario=usuario;
+        this.clave=clave;
+        inicializarConexion();
+    }
+ 
+    public void inicializarConexion() {
+        Hashtable env = new Hashtable();
+        env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+        env.put(Context.PROVIDER_URL, servidor);
+        env.put(Context.SECURITY_AUTHENTICATION, tipoAuth);
+        env.put(Context.SECURITY_PRINCIPAL, dn);
+        env.put(Context.SECURITY_CREDENTIALS, clave);
+ 
+        try {
+            dc = new InitialDirContext(env);
+            setAutenticado(true);
+        } catch (NamingException ex) {
+            System.out.println("Error Autenticando mediante LDAP, Error causado por : " + ex.toString());
+            setAutenticado(false);
+        }
+    }
+ 
+    /**
+     * Retorna el Atributo de la conexion con LDAP actual
+     * 
+     * @param atributo Nombre del Atributo que se desea obtener
+     * @return Attribute con la informacion correspondiente
+     */
+ 
+    public Attribute cargarPropiedadConexion(String atributo) {
+        Attribute propiedad = null;
+ 
+        try {
+            Attributes attrs = dc.getAttributes(dn);
+ 
+            if (attrs == null) {
+                propiedad = null;
+            } else {
+                propiedad = attrs.get(atributo);
+            }
+        } catch (Exception e) {
+            propiedad = null;
+        }
+        return propiedad;
+    }
+ 
+     
+    /*Get's y Set's*/
+    public boolean isAutenticado() {
+        return autenticado;
+    }
+    public void setAutenticado(boolean autenticado) {
+        this.autenticado = autenticado;
+    }
+    public String getUsuario() {
+        return usuario;
+    }
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
 }
-}
+    
+
