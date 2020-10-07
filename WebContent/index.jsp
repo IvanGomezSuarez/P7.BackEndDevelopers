@@ -10,15 +10,15 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 	<link href="CSS/estilos.css" rel="stylesheet" type="text/css">
-	<title>Insert title here</title>
+	<title>Log in</title>
 </head>
 <body>
 	<div class="container">
-		<form action="Principal.jsp">
+		<form action="Servlet" method= "POST">
 			<div class="form-group text-center">
 				<img src="img/user.png" height="90" width="90" />
 				<p>
-					<strong>Loggin</strong>
+					<strong>Log in</strong>
 				</p>
 			</div>
 			<div class="form-group">
