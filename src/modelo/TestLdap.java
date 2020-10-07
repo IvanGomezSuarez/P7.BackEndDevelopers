@@ -17,10 +17,10 @@ public class TestLdap {
         String server="ldap://127.0.0.1:389"; // servidor de LDAP
         String usuario="admin"; // Usuario de Autenticacion
         String dn="uid=" + usuario + ",ou=system,dc=example,dc=com"; // Ruta del Arbol LDAP
-        String tipoAth="simple";//tipo de autentuicacion simple o por SSL
+        String tipoAuth="simple";//tipo de autentuicacion simple o por SSL
         String clave="secret";
  
-        ldapAuth ldapAuth=new ldapAuth(server,dn,tipoAth,usuario,clave);
+        ldapAuth ldapAuth=new ldapAuth(server,dn,tipoAuth,usuario,clave);
  
         if(ldapAuth.isAutenticado()){
             System.out.println("Usuario "+ldapAuth.getUsuario()+" Autenticado Correctamente");

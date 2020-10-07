@@ -99,5 +99,8 @@ public class ldapAuth {
 	    public void setUsuario(String usuario) {
 	        this.usuario = usuario;
 	    }
+	    public String getClave() {
+	    	return clave;
+	    }
 	}
 

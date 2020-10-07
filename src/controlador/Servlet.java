@@ -23,58 +23,9 @@ import javax.naming.directory.InitialDirContext;
  */
 @WebServlet("/Servlet")
 public class Servlet extends HttpServlet {
-	
-	private String usuario;
-    private String clave;
-    private String servidor;
-    private String dn;
-    private String tipoAuth;
-    private boolean autenticado;
-     
-    DirContext dc;
+
 	private static final long serialVersionUID = 1L;
        
-	
-	public Servlet(String server, String dn, String ta,String usuario,String clave) {
-        this.servidor = server;
-        this.dn = dn;
-        this.tipoAuth = ta;
-        this.usuario=usuario;
-        this.clave=clave;
-        inicializarConexion();
-    }
-	
-	public void inicializarConexion() {
-        Hashtable<String, String> env = new Hashtable<>();
-        env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-        env.put(Context.PROVIDER_URL, servidor);
-        env.put(Context.SECURITY_AUTHENTICATION, tipoAuth);
-        env.put(Context.SECURITY_PRINCIPAL, dn);
-        env.put(Context.SECURITY_CREDENTIALS, clave);
- 
-        try {
-            dc = new InitialDirContext(env);
-            setAutenticado(true);
-        } catch (NamingException ex) {
-            System.out.println("Error Autenticando mediante LDAP, Error causado por : " + ex.toString());
-            setAutenticado(false);
-        }
-    }
-	
-	/*Get's y Set's*/
-    public boolean isAutenticado() {
-        return autenticado;
-    }
-    public void setAutenticado(boolean autenticado) {
-        this.autenticado = autenticado;
-    }
-    public String getUsuario() {
-        return usuario;
-    }
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-	
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -103,13 +54,15 @@ public class Servlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		doGet(request, response);
+		
 		String usuario	=	request.getParameter("txtNombre");
 		String clave	=	request.getParameter("psw");
-		String server="ldap://127.0.0.1:389"; // servidor de LDAP
-        String dn="uid=" + usuario + ",ou=system,dc=example,dc=com"; // Ruta del Arbol LDAP
-        String tipoAth="simple";//tipo de autentuicacion simple o por SSL	
+		String server="ldap://127.0.0.1:10389"; // servidor de LDAP
+        String dn="uid=" + usuario + ",ou=system"; // Ruta del Arbol LDAP
+        String tipoAuth="simple";//tipo de autentuicacion simple o por SSL	
 
-		ldapAuth ldapAuth=new ldapAuth(server,dn,tipoAth,usuario,clave);
+		ldapAuth ldapAuth=new ldapAuth(server,dn,tipoAuth,usuario,clave);
 		 
         if(ldapAuth.isAutenticado()){
             System.out.println("Usuario "+ldapAuth.getUsuario()+" Autenticado Correctamente");
@@ -127,6 +80,7 @@ public class Servlet extends HttpServlet {
         }
         else{
             System.out.println("Usuario "+ldapAuth.getUsuario()+" No se Puedo Autenticar");
+            response.sendRedirect("index.jsp");
         }
 	    
 	}
