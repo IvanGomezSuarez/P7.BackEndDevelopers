@@ -66,7 +66,9 @@ public class Servlet extends HttpServlet {
 		 
         if(ldapAuth.isAutenticado()){
             System.out.println("Usuario "+ldapAuth.getUsuario()+" Autenticado Correctamente");
-            response.sendRedirect("Principal.jsp");
+            //response.sendRedirect("Principal.jsp");
+            request.setAttribute("usuario",usuario);
+            request.getRequestDispatcher("Principal.jsp").forward(request,  response);
             
             /* obtenemos una Propiedad de la autenticacion
              *

@@ -18,7 +18,7 @@
 			<a style="color: white" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> Cerrar Sesion</a>
 			<div class="dropdown-menu text-center">
 				<a><img src="img/user.png" height="70" width="70"></a><br> 
-				<a>User</a> 
+				<a>${usuario}</a> 
 				<a>ejemplo@gmail.com</a> 
 				<div class="dropdown-divider"></div>
 				<a href="index.jsp" class="dropdown-item">Salir</a>
@@ -26,7 +26,7 @@
 		</div>
 	</nav>
 	<div class="container mt-4">
-	<h1>Bienvenido a la aplicación de BackEndDevelopers.....<strong>Usuario:</strong></h1>
+	<h1>Bienvenido a la aplicación de BackEndDevelopers.....<strong>Usuario: ${usuario}</strong></h1>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
