@@ -20,7 +20,7 @@ public class TestLdap {
         String tipoAuth="simple";//tipo de autentuicacion simple o por SSL
         String clave="secret";
  
-        ldapAuth ldapAuth=new ldapAuth(server,dn,tipoAuth,usuario,clave);
+        LdapAuth ldapAuth=new LdapAuth(server,dn,tipoAuth,usuario,clave);
  
         if(ldapAuth.isAutenticado()){
             System.out.println("Usuario "+ldapAuth.getUsuario()+" Autenticado Correctamente");

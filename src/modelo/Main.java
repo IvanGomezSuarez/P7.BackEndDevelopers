@@ -13,7 +13,7 @@ import javax.naming.directory.InitialDirContext;
  * Ahora hay que conseguir que los datos sean entrados a través de la aplicación
  * /*
  */
-public class main {
+public class Main {
 
     public static void main (String[] args){
         System.out.println("Iniciando Autenticacion");

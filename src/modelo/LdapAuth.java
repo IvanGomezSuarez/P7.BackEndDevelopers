@@ -13,7 +13,7 @@ import javax.naming.directory.InitialDirContext;
  * 
  * 
  * */
-public class ldapAuth {
+public class LdapAuth {
 
  
 	    private String usuario;
@@ -35,7 +35,7 @@ public class ldapAuth {
 	     * @param clave   Clave del usuario
 	     *
 	     */
-	    public ldapAuth(String server, String dn, String ta,String usuario,String clave) {
+	    public LdapAuth(String server, String dn, String ta,String usuario,String clave) {
 	        this.servidor = server;
 	        this.dn = dn;
 	        this.tipoAuth = ta;
