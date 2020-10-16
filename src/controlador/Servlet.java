@@ -82,7 +82,9 @@ public class Servlet extends HttpServlet {
         }
         else{
             System.out.println("Usuario "+ldapAuth.getUsuario()+" No se Puedo Autenticar");
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("error.jsp");
+            //request.setAttribute("usuario",usuario);
+            //request.getRequestDispatcher("error.jsp").forward(request,  response);
         }
 	    
 	}
