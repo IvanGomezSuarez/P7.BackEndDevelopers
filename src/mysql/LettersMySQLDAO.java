@@ -1,5 +1,6 @@
 package mysql;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -8,6 +9,12 @@ import dao.DAOLetters;
 import modelo.Letters;
 //esta clase contiene todos los métodos para el CRUD con la BD
 public class LettersMySQLDAO implements DAOLetters {
+	
+	private Connection conn;
+
+	public LettersMySQLDAO(Connection conn) {
+		this.conn = conn;
+	}
 
 	@Override
 	public Letters get(String id) throws DAOException {

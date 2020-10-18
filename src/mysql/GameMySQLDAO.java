@@ -1,5 +1,6 @@
 package mysql;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -9,6 +10,12 @@ import modelo.Game;
 
 //esta clase contiene todos los métodos para el CRUD con la BD
 public class GameMySQLDAO implements DAOGame {
+	
+	private Connection conn;
+
+	public GameMySQLDAO(Connection conn) {
+		this.conn = conn;
+	}
 
 	@Override
 	public Game get(String id) throws DAOException {
