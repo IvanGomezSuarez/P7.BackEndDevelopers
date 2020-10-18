@@ -181,7 +181,8 @@ public class UsersMySQLDAO implements DAOUsers {
 		try {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/sopaletras","root","");
 			DAOUsers dao = new UsersMySQLDAO(conn);
-
+			Users nuevo = new Users("loli", "ejemplo2@gmail.com", "admin");
+			dao.save(nuevo);
 			/*List<Users> user = dao.getAll();
 			for (Users t: user) {
 				System.out.println(t.toString());
