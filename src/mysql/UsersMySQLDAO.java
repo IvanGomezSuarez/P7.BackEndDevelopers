@@ -1,6 +1,7 @@
 package mysql;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -173,6 +174,24 @@ public class UsersMySQLDAO implements DAOUsers {
 		Users user = new Users(username, email, pass);
 		
 		return user;
+	}
+	
+	public static void main(String[] args) throws SQLException, DAOException {
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/sopaletras","root","");
+			DAOUsers dao = new UsersMySQLDAO(conn);
+
+			List<Users> user = dao.getAll();
+			for (Users t: user) {
+				System.out.println(t.toString());
+			}
+			
+		}finally {
+			if (conn != null) {
+				conn.close();
+			}
+		}
 	}
 
 }
