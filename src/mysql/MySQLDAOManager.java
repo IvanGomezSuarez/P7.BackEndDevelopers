@@ -22,7 +22,7 @@ public class MySQLDAOManager implements DAOManager {
 	private DAOWords words = null;
 	
 	
-	public MySQLDAOManager(String host, String username, String database, String password) throws SQLException {
+	public MySQLDAOManager(String host, String database, String username, String password) throws SQLException {
 		conn = DriverManager.getConnection("jdbc:mysql://" + host + "/" + database, username, password);
 	}
 
@@ -62,7 +62,7 @@ public class MySQLDAOManager implements DAOManager {
 		}
 		return words;
 	}
-	
+// para probar que se muestran los datos	
 	public static void main(String[] args) throws SQLException, DAOException {
 		MySQLDAOManager man = new MySQLDAOManager("localhost:3307","sopaletras", "root", "");
 		List<Users> users = man.getDAOUsers().getAll();
