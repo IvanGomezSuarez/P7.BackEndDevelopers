@@ -3,6 +3,7 @@ package mysql;
 import java.sql.SQLException;
 import java.util.List;
 
+import dao.DAOException;
 import dao.DAOGame;
 import modelo.Game;
 
@@ -10,29 +11,29 @@ import modelo.Game;
 public class GameMySQLDAO implements DAOGame {
 
 	@Override
-	public Game get(Long id) throws SQLException {
+	public Game get(Long id) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Game> getAll() throws SQLException {
+	public List<Game> getAll() throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void save(Game t) throws SQLException {
+	public void save(Game t) throws DAOException {
 
 	}
 
 	@Override
-	public void update(Game t) throws SQLException {
+	public void update(Game t) throws DAOException {
 
 	}
 
 	@Override
-	public void delete(Game t) throws SQLException {
+	public void delete(Game t) throws DAOException {
 
 	}
 
