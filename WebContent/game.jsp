@@ -5,7 +5,7 @@
 <head>
   <title>Sopa de letras</title>
   
-    <link rel="stylesheet" type="text/css" href="/CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
     <script type="text/javascript" src="wordfind.js"></script> 
     <script type="text/javascript" src="wordfindgame.js"></script> 
