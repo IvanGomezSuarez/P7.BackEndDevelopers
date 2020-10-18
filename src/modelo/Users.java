@@ -35,6 +35,13 @@ public class Users {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+
+	@Override
+	public String toString() {
+		return "Users [username=" + username + ", email=" + email + ", pass=" + pass + "]";
+	}
+	
+	
 	
 	
 	
