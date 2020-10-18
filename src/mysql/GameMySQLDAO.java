@@ -11,7 +11,7 @@ import modelo.Game;
 public class GameMySQLDAO implements DAOGame {
 
 	@Override
-	public Game get(Long id) throws DAOException {
+	public Game get(String id) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}

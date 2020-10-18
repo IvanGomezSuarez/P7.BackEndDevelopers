@@ -10,7 +10,7 @@ import modelo.Letters;
 public class LettersMySQLDAO implements DAOLetters {
 
 	@Override
-	public Letters get(Long id) throws DAOException {
+	public Letters get(String id) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}

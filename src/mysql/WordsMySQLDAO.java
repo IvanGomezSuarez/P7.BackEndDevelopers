@@ -17,7 +17,7 @@ public class WordsMySQLDAO implements DAOWords {
 	}
 	
 	@Override
-	public Words get(Long id) throws DAOException {
+	public Words get(String id) throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -7,7 +7,7 @@ import modelo.Game;
 //esta clase extiende los métodos genericos de IbaseDao, aplicable como plantilla para los DAO especificos
 
 @SuppressWarnings("unused")
-public interface DAOGame extends IBaseDao<Game, Long> {
+public interface DAOGame extends IBaseDao<Game, String> {
 
 
 

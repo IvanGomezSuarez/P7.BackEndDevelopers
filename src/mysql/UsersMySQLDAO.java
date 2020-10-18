@@ -28,13 +28,13 @@ public class UsersMySQLDAO implements DAOUsers {
 	
 
 	@Override
-	public Users get(Long id) throws DAOException{
+	public Users get(String id) throws DAOException{
 		PreparedStatement stat = null;
 		ResultSet rs = null;
 		Users t = null;
 		try {
 			stat = conn.prepareStatement(GETONE);
-			stat.setLong(1, id);
+			stat.setString(1, id);
 			rs = stat.executeQuery();
 			if (rs.next()) {
 				t = convertir(rs);
