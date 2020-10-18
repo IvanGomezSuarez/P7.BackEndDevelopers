@@ -9,6 +9,4 @@ import modelo.Game;
 @SuppressWarnings("unused")
 public interface DAOGame extends IBaseDao<Game, String> {
 
-
-
 }
