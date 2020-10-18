@@ -5,7 +5,7 @@ import java.util.List;
 
 import dao.DAOLetters;
 import modelo.Letters;
-
+//esta clase contiene todos los métodos para el CRUD con la BD
 public class LettersMySQLDAO implements DAOLetters {
 
 	@Override
@@ -21,21 +21,18 @@ public class LettersMySQLDAO implements DAOLetters {
 	}
 
 	@Override
-	public Letters save(Letters t) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public void save(Letters t) throws SQLException {
+
 	}
 
 	@Override
-	public Letters update(Letters t) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public void update(Letters t) throws SQLException {
+
 	}
 
 	@Override
-	public Letters delete(Letters t) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public void delete(Letters t) throws SQLException {
+
 	}
 
 }

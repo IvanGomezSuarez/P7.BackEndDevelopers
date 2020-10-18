@@ -6,6 +6,7 @@ import java.util.List;
 import dao.DAOGame;
 import modelo.Game;
 
+//esta clase contiene todos los métodos para el CRUD con la BD
 public class GameMySQLDAO implements DAOGame {
 
 	@Override
@@ -21,21 +22,18 @@ public class GameMySQLDAO implements DAOGame {
 	}
 
 	@Override
-	public Game save(Game t) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public void save(Game t) throws SQLException {
+
 	}
 
 	@Override
-	public Game update(Game t) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public void update(Game t) throws SQLException {
+
 	}
 
 	@Override
-	public Game delete(Game t) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public void delete(Game t) throws SQLException {
+
 	}
 
 }
