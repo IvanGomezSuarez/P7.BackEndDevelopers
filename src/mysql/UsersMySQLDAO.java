@@ -2,7 +2,9 @@ package mysql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.DAOException;
@@ -25,15 +27,71 @@ public class UsersMySQLDAO implements DAOUsers {
 	
 
 	@Override
-	public Users get(Long id) throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
+	public Users get(Long id) throws DAOException{
+		PreparedStatement stat = null;
+		ResultSet rs = null;
+		Users t = null;
+		try {
+			stat = conn.prepareStatement(GETONE);
+			stat.setLong(1, id);
+			rs = stat.executeQuery();
+			if (rs.next()) {
+				t = convertir(rs);
+			}else {
+				throw new DAOException("No se ha encontrado el usuario.");
+			}
+		}catch (SQLException ex) {
+			throw new DAOException("Error en SQL", ex);
+		}finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				}catch (SQLException ex) {
+					new DAOException("Error en SQL", ex);
+				}
+			}
+			if (stat != null) {
+				try {
+					stat.close();
+				}catch (SQLException ex) {
+					new DAOException("Error en SQL", ex);
+				}
+			}
+		}
+		return t;
 	}
 
 	@Override
 	public List<Users> getAll() throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
+		PreparedStatement stat = null;
+		ResultSet rs = null;
+		List<Users> user = new ArrayList<>();
+		try {
+			stat = conn.prepareStatement(GETALL);
+			rs = stat.executeQuery();
+			while (rs.next()) {
+				user.add(convertir(rs));
+				
+			}
+		}catch (SQLException ex) {
+			throw new DAOException("Error en SQL", ex);
+		}finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				}catch (SQLException ex) {
+					new DAOException("Error en SQL", ex);
+				}
+			}
+			if (stat != null) {
+				try {
+					stat.close();
+				}catch (SQLException ex) {
+					new DAOException("Error en SQL", ex);
+				}
+			}
+		}
+		return user;
 	}
 
 	@Override
@@ -64,12 +122,57 @@ public class UsersMySQLDAO implements DAOUsers {
 
 	@Override
 	public void update(Users t) throws DAOException {
-
+		PreparedStatement stat = null;
+		try {
+			stat = conn.prepareStatement(UPDATE);
+			stat.setLong(1, t.getUsername());
+			stat.setString(2,  t.getEmail());
+			stat.setString(3, t.getPass());
+			if (stat.executeUpdate() == 0) {
+				throw new DAOException("El alumno no se ha borrado.");
+			}
+	}catch (SQLException ex) {
+		throw new DAOException("Error de SQL", ex);
+		}finally {
+			if (stat != null) {
+				try {
+					stat.close();
+				} catch (SQLException ex) {
+					throw new DAOException("Error de SQL", ex);
+				}
+			}
+		}
 	}
 
 	@Override
 	public void delete(Users t) throws DAOException {
-
+		PreparedStatement stat = null;
+		try {
+			stat = conn.prepareStatement(DELETE);
+			stat.setLong(1, t.getUsername());
+			if (stat.executeUpdate() == 0) {
+				throw new DAOException("El alumno no se ha borrado.");
+			}
+	}catch (SQLException ex) {
+		throw new DAOException("Error de SQL", ex);
+		}finally {
+			if (stat != null) {
+				try {
+					stat.close();
+				} catch (SQLException ex) {
+					throw new DAOException("Error de SQL", ex);
+				}
+			}
+		}
+	}
+	
+	private Users convertir(ResultSet rs) throws SQLException {
+		Long username = rs.getLong("username");
+		String email = rs.getString("email");
+		String pass = rs.getString("pass");
+		Users user = new Users(username, email, pass);
+		
+		return user;
 	}
 
 }
