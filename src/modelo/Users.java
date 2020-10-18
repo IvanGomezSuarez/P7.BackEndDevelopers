@@ -1,22 +1,22 @@
 package modelo;
 
 public class Users {
-	private long username;
+	private String username;
 	private String email;
 	private String pass;
 	
-	public Users(long username, String email, String pass) {
+	public Users(String username, String email, String pass) {
 		super();
 		this.setUsername(username);
 		this.setEmail(email);
 		this.setPass(pass);
 	}
 
-	public long getUsername() {
+	public String getUsername() {
 		return username;
 	}
 
-	public void setUsername(long username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 

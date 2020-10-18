@@ -100,7 +100,7 @@ public class UsersMySQLDAO implements DAOUsers {
 		PreparedStatement stat = null;
 		try {
 			stat = conn.prepareStatement(INSERT);
-			stat.setLong(1, t.getUsername());
+			stat.setString(1, t.getUsername());
 			stat.setString(2,  t.getEmail());
 			stat.setString(3, t.getPass());
 			if (stat.executeUpdate() == 0){
@@ -126,7 +126,7 @@ public class UsersMySQLDAO implements DAOUsers {
 		PreparedStatement stat = null;
 		try {
 			stat = conn.prepareStatement(UPDATE);
-			stat.setLong(1, t.getUsername());
+			stat.setString(1, t.getUsername());
 			stat.setString(2,  t.getEmail());
 			stat.setString(3, t.getPass());
 			if (stat.executeUpdate() == 0) {
@@ -150,7 +150,7 @@ public class UsersMySQLDAO implements DAOUsers {
 		PreparedStatement stat = null;
 		try {
 			stat = conn.prepareStatement(DELETE);
-			stat.setLong(1, t.getUsername());
+			stat.setString(1, t.getUsername());
 			if (stat.executeUpdate() == 0) {
 				throw new DAOException("El alumno no se ha borrado.");
 			}
@@ -168,7 +168,7 @@ public class UsersMySQLDAO implements DAOUsers {
 	}
 	
 	private Users convertir(ResultSet rs) throws SQLException {
-		Long username = rs.getLong("username");
+		String username = rs.getString("username");
 		String email = rs.getString("email");
 		String pass = rs.getString("pass");
 		Users user = new Users(username, email, pass);
@@ -182,10 +182,10 @@ public class UsersMySQLDAO implements DAOUsers {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/sopaletras","root","");
 			DAOUsers dao = new UsersMySQLDAO(conn);
 
-			List<Users> user = dao.getAll();
+			/*List<Users> user = dao.getAll();
 			for (Users t: user) {
 				System.out.println(t.toString());
-			}
+			}*/
 			
 		}finally {
 			if (conn != null) {
