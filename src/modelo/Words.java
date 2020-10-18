@@ -1,14 +1,21 @@
 package modelo;
 
 public class Words {
-	String idWord;
+	private long idWord;
 
-	public String getIdWord() {
+	public Words(long idWord) {
+		super();
+		this.setIdWord(idWord);
+	}
+
+	public long getIdWord() {
 		return idWord;
 	}
 
-	public void setIdWord(String idWord) {
+	public void setIdWord(long idWord) {
 		this.idWord = idWord;
 	}
+
+	
 
 }

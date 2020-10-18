@@ -3,9 +3,9 @@ package dao;
 import java.util.List;
 import java.sql.SQLException;
 
-public interface IBaseDao<T> {
+public interface IBaseDao<T, K> {
 	
-    T get(Long id) throws SQLException;
+    T get(K id) throws SQLException;
 
     List<T> getAll() throws SQLException;
 

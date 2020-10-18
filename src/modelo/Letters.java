@@ -1,14 +1,22 @@
 package modelo;
 
 public class Letters {
-	String idLetter;
+	private long idLetter;
+	
+	
 
-	public String getIdLetter() {
+	public Letters(long idLetter) {
+		super();
+		this.idLetter = idLetter;
+	}
+
+	public long getIdLetter() {
 		return idLetter;
 	}
 
-	public void setIdLetter(String idLetter) {
+	public void setIdLetter(long idLetter) {
 		this.idLetter = idLetter;
 	}
+
 
 }
