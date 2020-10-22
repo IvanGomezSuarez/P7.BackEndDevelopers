@@ -64,7 +64,7 @@ public class MySQLDAOManager implements DAOManager {
 	}
 // para probar que se muestran los datos de un determinado DAO, en este caso del de DAOUsers
 	public static void main(String[] args) throws SQLException, DAOException {
-		MySQLDAOManager man = new MySQLDAOManager("localhost:3307","sopaletras", "root", "");
+		MySQLDAOManager man = new MySQLDAOManager("localhost:3306","sopaletras", "root", "");
 		List<Users> users = man.getDAOUsers().getAll();
 		System.out.println(users);
 	}

@@ -14,7 +14,7 @@ public class TestLdap {
 	public static void main(String[] args) throws NamingException{
         System.out.println("Iniciando Autenticacion");
          
-        String server="ldap://127.0.0.1:389"; // servidor de LDAP
+        String server="ldap://127.0.0.1:10389"; // servidor de LDAP
         String usuario="admin"; // Usuario de Autenticacion
         String dn="uid=" + usuario + ",ou=system,dc=example,dc=com"; // Ruta del Arbol LDAP
         String tipoAuth="simple";//tipo de autentuicacion simple o por SSL

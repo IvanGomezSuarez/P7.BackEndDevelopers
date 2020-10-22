@@ -11,7 +11,8 @@ import java.util.List;
 import dao.DAOException;
 import dao.DAOUsers;
 import modelo.Users;
-//esta clase contiene todos los métodos para el CRUD con la BD
+
+//esta clase contiene todos los mï¿½todos para el CRUD con la BD
 public class UsersMySQLDAO implements DAOUsers {
 	
 	final String INSERT = "INSERT INTO users(username, email, pass) VALUES(?, ? ,?)";
@@ -130,7 +131,7 @@ public class UsersMySQLDAO implements DAOUsers {
 			stat.setString(2,  t.getEmail());
 			stat.setString(3, t.getPass());
 			if (stat.executeUpdate() == 0) {
-				throw new DAOException("El alumno no se ha borrado.");
+				throw new DAOException("El usuario no se ha actualizado.");
 			}
 	}catch (SQLException ex) {
 		throw new DAOException("Error de SQL", ex);
@@ -152,7 +153,7 @@ public class UsersMySQLDAO implements DAOUsers {
 			stat = conn.prepareStatement(DELETE);
 			stat.setString(1, t.getUsername());
 			if (stat.executeUpdate() == 0) {
-				throw new DAOException("El alumno no se ha borrado.");
+				throw new DAOException("El usuario no se ha borrado.");
 			}
 	}catch (SQLException ex) {
 		throw new DAOException("Error de SQL", ex);
@@ -179,7 +180,7 @@ public class UsersMySQLDAO implements DAOUsers {
 	public static void main(String[] args) throws SQLException, DAOException {
 		Connection conn = null;
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/sopaletras","root","");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sopaletras","root","");
 			DAOUsers dao = new UsersMySQLDAO(conn);
 			//Users nuevo = new Users("loli", "ejemplo2@gmail.com", "admin");
 			//dao.save(nuevo);

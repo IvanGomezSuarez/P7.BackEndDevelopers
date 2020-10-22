@@ -26,9 +26,9 @@
 		</div>
 	</nav>
 	<div class="container mt-4">
-	<h1>Bienvenido a la aplicación de BackEndDevelopers.....<strong>Usuario: ${usuario}</strong></h1>
+	<h2>Bienvenido a la aplicación de BackEndDevelopers.....<strong>Usuario: ${usuario}</strong></h2>
 	</div>
-     <a class="btn btn-primary" href="game.jsp" role="button">Jugar</a> 
+     <a class="btn btn-primary btn-lg" href="game.jsp" role="button">Jugar</a> 
 	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
