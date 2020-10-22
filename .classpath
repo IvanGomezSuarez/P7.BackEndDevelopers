@@ -12,7 +12,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Cristian/Desktop/P7.BackEndDevelopers/sun-jndi-ldap.jar">
+	<classpathentry kind="lib" path="C:/Users/moi_8/git/P7.BackEndDevelopers/sun-jndi-ldap.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

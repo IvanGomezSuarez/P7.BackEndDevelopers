@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.ldapAuth;
+import modelo.LdapAuth;
 
 import java.util.Hashtable;
 import javax.naming.Context;
@@ -62,13 +62,13 @@ public class Servlet extends HttpServlet {
         String dn="uid=" + usuario + ",ou=system"; // Ruta del Arbol LDAP
         String tipoAuth="simple";//tipo de autentuicacion simple o por SSL	
 
-		ldapAuth ldapAuth=new ldapAuth(server,dn,tipoAuth,usuario,clave);
+		LdapAuth ldapAuth=new LdapAuth(server,dn,tipoAuth,usuario,clave);
 		 
         if(ldapAuth.isAutenticado()){
             System.out.println("Usuario "+ldapAuth.getUsuario()+" Autenticado Correctamente");
             //response.sendRedirect("Principal.jsp");
             request.setAttribute("usuario",usuario);
-            request.getRequestDispatcher("Principal.jsp").forward(request,  response);
+            request.getRequestDispatcher("principal.jsp").forward(request,  response);
             
             /* obtenemos una Propiedad de la autenticacion
              *
