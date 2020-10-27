@@ -16,6 +16,20 @@
 
 </head>
 <body>	
+<nav class="navbar navbar-dark bg-dark">
+		<a style="color: white" class="navbar-toggler" href="principal.jsp"><span
+			class="navbar-toggler-icon"></span>Home</a>
+		<div class="dropdown">
+			<a style="color: white" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> Cerrar Sesion</a>
+			<div class="dropdown-menu text-center">
+				<a><img src="img/user.png" height="70" width="70"></a><br> 
+				<a>${usuario}</a> 
+				<a>ejemplo@gmail.com</a> 
+				<div class="dropdown-divider"></div>
+				<a href="index.jsp" class="dropdown-item">Salir</a>
+			</div>
+		</div>
+	</nav>
 <div class="row my-1 mx-1">
   <div class="col-sm-6">
 <div class="card text-center" style="width: 45rem;">

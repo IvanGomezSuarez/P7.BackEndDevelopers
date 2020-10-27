@@ -8,7 +8,7 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 <meta charset="ISO-8859-1">
-<title>JSP Page</title>
+<title>Principal</title>
 </head>
 <body>
 	<nav class="navbar navbar-dark bg-dark">
@@ -28,7 +28,10 @@
 	<div class="container mt-4">
 	<h1>Bienvenido a la aplicación de BackEndDevelopers.....<strong>Usuario: ${usuario}</strong></h1>
 	</div>
-     <a class="btn btn-primary" href="game.jsp" role="button">Jugar</a> 
+	<div style="margin: auto; width: 50%; padding: 10px;">
+	<a class="btn btn-primary" href="game.jsp" role="button">Jugar</a>
+	</div>
+      
 	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
