@@ -15,9 +15,9 @@ p {
 * Styles for the puzzle
 */
 #juego {
-  border: 1px solid black;
+  border: 0;
   padding: 20px;
-  float: left;
+  float: center;
   margin: 30px 20px;
 }
 

@@ -6,17 +6,44 @@
   <title>Sopa de letras</title>
   
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
     <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
     <script type="text/javascript" src="wordfind.js"></script> 
     <script type="text/javascript" src="wordfindgame.js"></script> 
 
 </head>
-<body>
-
+<body>	
+<div class="row my-1 mx-1">
+  <div class="col-sm-6">
+<div class="card text-center" style="width: 45rem;">
+  <div class="card-header">
+    Sopa de Letras
+  </div>
+  <div class="card-body">
+    <p class="card-text">
     <div id='juego'></div>
-    <div id='Palabras'></div>
+    </p>
+  </div>
+</div>
+</div>
+ <div class="col-sm-6">
+ <div style="padding:25px"></div>
+    <div class="card" style="width: 20rem;">
+      <div class="card-body">
+        <h5 class="card-title">Debes encontrar...</h5>
+        <p class="card-text">
+        <div id='Palabras'></div>
+        <div><button id='solve' class="btn btn-primary">Resolver el juego</button></div>
+        </p>
+      </div>
+    </div> 
+    </div>
+    </div>
     
-    <div><button id='solve'>Resolver el juego</button></div>
+    
     <script>
     var words = ['Develoteca','cursos','ayuda','Videos','Tutoriales','Plugins'];
     var gamePuzzle = wordfindgame.create(words, '#juego', '#Palabras'); 
