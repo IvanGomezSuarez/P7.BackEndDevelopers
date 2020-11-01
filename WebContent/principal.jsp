@@ -26,7 +26,7 @@
 		</div>
 	</nav>
 	<div class="container mt-4">
-	<h1>Bienvenido a la aplicación de BackEndDevelopers.....<strong>Usuario: ${usuario}</strong></h1>
+	<h1>Bienvenido a la aplicación de BackEndDevelopers....<strong>Usuario: ${usuario}</strong></h1>
 	</div>
 	<div style="margin: auto; width: 50%; padding: 10px;">
 	<a class="btn btn-primary" href="game.jsp" role="button">Jugar</a>
