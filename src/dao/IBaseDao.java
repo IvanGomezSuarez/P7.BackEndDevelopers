@@ -1,7 +1,6 @@
 package dao;
 
 import java.util.List;
-import java.sql.SQLException;
 // clase plantilla
 public interface IBaseDao<T, K> {
 	
@@ -14,4 +13,6 @@ public interface IBaseDao<T, K> {
     void update(T t) throws DAOException;
 
     void delete(T t) throws DAOException;
+
+	T create() throws DAOException;
 }
