@@ -1,4 +1,4 @@
-package jpa;
+package entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -10,11 +10,10 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="game")
-@NamedQuery(name="Game.findAll", query="SELECT g FROM Game g")
 public class Game implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-
+	@Column(name = "score")
 	private int score;
 
 	//bi-directional many-to-one association to User
@@ -22,19 +21,42 @@ public class Game implements Serializable {
 	@JoinColumn(name="users_username1")
 	private User user;
 
+	@Id
+    @Column(name = "id")
+    private String id;
+	
 	public Game() {
+	}
+	
+	public Game(String id, User user, int score) {
+		this.id = id;
+		this.user = user;
+		this.score = score;
+	}
+	
+	public Game(User user, int score) {
+		this.user = user;
+		this.score = score;
 	}
 
 	public int getScore() {
-		return this.score;
+		return score;
+	}
+	
+	public String getId() {
+		return id;
 	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	public void setScore(int score) {
 		this.score = score;
 	}
 
 	public User getUser() {
-		return this.user;
+		return user;
 	}
 
 	public void setUser(User user) {
