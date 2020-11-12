@@ -53,11 +53,10 @@ public void save(T t) throws DAOException {
 
 
 
-
 @Override
-public T create() throws DAOException {
+public void create(T t) throws DAOException {
 	// TODO Auto-generated method stub
-	return null;
+	
 }
 
 }

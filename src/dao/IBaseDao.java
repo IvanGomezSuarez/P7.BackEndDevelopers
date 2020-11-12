@@ -1,7 +1,9 @@
 package dao;
 
 import java.util.List;
+
 // clase plantilla
+
 public interface IBaseDao<T, K> {
 	
     T get(K id) throws DAOException;
@@ -14,5 +16,5 @@ public interface IBaseDao<T, K> {
 
     void delete(T t) throws DAOException;
 
-	T create() throws DAOException;
+	void create(T t) throws DAOException;
 }
