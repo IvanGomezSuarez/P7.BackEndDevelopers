@@ -10,24 +10,37 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="game")
-@NamedQuery(name="Game.findAll", query="SELECT g FROM Game g")
 
 public class Game implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@Column(name = "idgame")
-	private int idgame;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long idgame;
 	
 	@Column(name = "score")
 	private int score;
+	
+	@Column(name="users_username1")
+	private String users_username1;
 
-	//bi-directional many-to-one association to User
-	@ManyToOne
-	@JoinColumn(name="users_username1")
-	private User user;
 
-	public int getIdgame() {
+	public Game() {
+		super();
+	}
+
+	public Game(long idgame, int score, String users_username1) {
+		super();
+		this.idgame = idgame;
+		this.score = score;
+		this.users_username1 = users_username1;
+	}
+	
+
+
+	public long getIdgame() {
 		return idgame;
 	}
 
@@ -35,8 +48,6 @@ public class Game implements Serializable {
 		this.idgame = idgame;
 	}
 
-	public Game() {
-	}
 
 	public int getScore() {
 		return this.score;
@@ -46,12 +57,19 @@ public class Game implements Serializable {
 		this.score = score;
 	}
 
-	public User getUser() {
-		return this.user;
+	public String getUsers_username1() {
+		return users_username1;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsers_username1(String users_username1) {
+		this.users_username1 = users_username1;
 	}
+
+	@Override
+	public String toString() {
+		return "Game [idgame=" + idgame + ", score=" + score + ", users_username1=" + users_username1 + "]";
+	}
+
+
 
 }
