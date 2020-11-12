@@ -17,9 +17,9 @@ public class Game implements Serializable {
 	private int score;
 
 	//bi-directional many-to-one association to User
-	@ManyToOne
-	@JoinColumn(name="users_username1")
-	private User user;
+
+	@Column(name="users")
+	private String user;
 
 	@Id
     @Column(name = "id")
@@ -28,13 +28,13 @@ public class Game implements Serializable {
 	public Game() {
 	}
 	
-	public Game(String id, User user, int score) {
+	public Game(String id, String user, int score) {
 		this.id = id;
 		this.user = user;
 		this.score = score;
 	}
 	
-	public Game(User user, int score) {
+	public Game(String user, int score) {
 		this.user = user;
 		this.score = score;
 	}
@@ -55,11 +55,11 @@ public class Game implements Serializable {
 		this.score = score;
 	}
 
-	public User getUser() {
+	public String getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 
