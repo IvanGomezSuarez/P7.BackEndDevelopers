@@ -18,17 +18,17 @@ public class Game implements Serializable {
 
 	//bi-directional many-to-one association to User
 
-	@Column(name="users")
+	@Column(name="users_username1")
 	private String user;
 
 	@Id
-    @Column(name = "id")
+    @Column(name = "idgame")
     private String id;
 	
 	public Game() {
 	}
 	
-	public Game(String id, String user, int score) {
+	public Game(String id, int score, String user) {
 		this.id = id;
 		this.user = user;
 		this.score = score;

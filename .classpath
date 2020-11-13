@@ -8,10 +8,11 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
 		<attributes>
+			<attribute name="module" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Ivan/Documents/IVAN/GRADO SUPERIOR DESARROLLO APLICACIONES WEB/(ICC02_P7) Aplicación backend con tecnologia Java en servidores de aplicaciones/sun-jndi-ldap.jar/sun-jndi-ldap.jar">
+	<classpathentry kind="lib" path="C:/Users/moi_8/Desktop/P7/sun-jndi-ldap.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
