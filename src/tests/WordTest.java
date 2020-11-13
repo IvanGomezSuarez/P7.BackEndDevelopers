@@ -30,9 +30,7 @@ public class WordTest {
     public static List<Word> devuelvePalabras() {
     	WordService wordservice = new WordService();
     	List<Word> palabras = wordservice.findAll();
-    	for (Word w : palabras) {
-            System.out.println("'"+ w.toString()+"'"+",");
-        }
+    	System.out.println(palabras.toString());
     	return palabras;
     	}
 }

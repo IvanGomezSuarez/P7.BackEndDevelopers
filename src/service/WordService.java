@@ -56,5 +56,15 @@ public class WordService {
         return wordDao;
     }
     
+    public List<Word> devuelvePalabras() {
+    	WordService wordservice = new WordService();
+    	List<Word> palabras = wordservice.findAll();
+    	
+    	for (Word w : palabras) {
+            System.out.println("'"+ w.toString()+"'"+",");
+        }
+    	return palabras;
+    	}
+    
     
 }

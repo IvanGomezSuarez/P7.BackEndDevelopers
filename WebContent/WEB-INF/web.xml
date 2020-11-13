@@ -22,6 +22,11 @@
 		<servlet-name>error</servlet-name>
 		<jsp-file>/error.jsp</jsp-file>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>game</servlet-name>
+		<jsp-file>/game.jsp</jsp-file>
+	</servlet>
 
 	<servlet>
 		<servlet-name>principal</servlet-name>

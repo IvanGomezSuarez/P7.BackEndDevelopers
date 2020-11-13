@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import = "tests.WordTest %>
+<%@ page import = "service.WordService" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,9 +59,16 @@
     </div>
     </div>
     
+<!-- new Wordservice.devuelvePalabras();  -->
     
+    <% System.out.print("Compruebo que java se ejecute"); %>
+    <jsp:useBean id="link" scope="application" class = "service.WordService" /> 
     <script>
-    var words = [<%= new WordTest.devuelvePalabras() %>];
+    var words = [
+    <% WordService t = new WordService(); 
+    t.devuelvePalabras();
+    %>
+    ];
     var gamePuzzle = wordfindgame.create(words, '#juego', '#Palabras'); 
         
     var puzzle = wordfind.newPuzzle(words,{height: 18, width:18, fillBlanks: false});
