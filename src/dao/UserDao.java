@@ -8,14 +8,14 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import entities.Game;
+import entities.User;
 
-public class GameDao implements DaoInterface<Game, String>{
+public class UserDao implements DaoInterface<User, String>{
 	private Session currentSession;
     
     private Transaction currentTransaction;
  
-    public GameDao() {
+    public UserDao() {
     }
  
     public Session openCurrentSession() {
@@ -62,32 +62,32 @@ public class GameDao implements DaoInterface<Game, String>{
         this.currentTransaction = currentTransaction;
     }
  
-    public void persist(Game entity) {
+    public void persist(User entity) {
         getCurrentSession().save(entity);
     }
  
-    public void update(Game entity) {
+    public void update(User entity) {
         getCurrentSession().update(entity);
     }
  
-    public Game findById(String id) {
-    	Game game = (Game) getCurrentSession().get(Game.class, id);
-        return game; 
+    public User findById(String id) {
+    	User user = (User) getCurrentSession().get(User.class, id);
+        return user; 
     }
  
-    public void delete(Game entity) {
+    public void delete(User entity) {
         getCurrentSession().delete(entity);
     }
  
     @SuppressWarnings("unchecked")
-    public List<Game> findAll() {
-        List<Game> games = (List<Game>) getCurrentSession().createQuery("from Game").list();
-        return games;
+    public List<User> findAll() {
+        List<User> users = (List<User>) getCurrentSession().createQuery("from User").list();
+        return users;
     }
  
     public void deleteAll() {
-        List<Game> entityList = findAll();
-        for (Game entity : entityList) {
+        List<User> entityList = findAll();
+        for (User entity : entityList) {
             delete(entity);
         }
     }

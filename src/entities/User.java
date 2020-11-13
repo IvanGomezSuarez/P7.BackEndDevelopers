@@ -1,4 +1,4 @@
-package jpa;
+package entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -17,25 +17,23 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="username")
 	private String username;
-
-	@Column(name="CURRENT_CONNECTIONS")
-	private BigInteger currentConnections;
-
+	
+	@Column(name="email")
 	private String email;
 
+	@Column(name="pass")
 	private String pass;
 
-	@Column(name="TOTAL_CONNECTIONS")
-	private BigInteger totalConnections;
-
-	private String user;
-
-	//bi-directional many-to-one association to Game
-	@OneToMany(mappedBy="user")
-	private List<Game> games;
 
 	public User() {
+	}
+	
+	public User(String username, String email, String pass) {
+		this.username = username;
+		this.email = email;
+		this.pass = pass;
 	}
 
 	public String getUsername() {
@@ -46,13 +44,6 @@ public class User implements Serializable {
 		this.username = username;
 	}
 
-	public BigInteger getCurrentConnections() {
-		return this.currentConnections;
-	}
-
-	public void setCurrentConnections(BigInteger currentConnections) {
-		this.currentConnections = currentConnections;
-	}
 
 	public String getEmail() {
 		return this.email;
@@ -68,44 +59,6 @@ public class User implements Serializable {
 
 	public void setPass(String pass) {
 		this.pass = pass;
-	}
-
-	public BigInteger getTotalConnections() {
-		return this.totalConnections;
-	}
-
-	public void setTotalConnections(BigInteger totalConnections) {
-		this.totalConnections = totalConnections;
-	}
-
-	public String getUser() {
-		return this.user;
-	}
-
-	public void setUser(String user) {
-		this.user = user;
-	}
-
-	public List<Game> getGames() {
-		return this.games;
-	}
-
-	public void setGames(List<Game> games) {
-		this.games = games;
-	}
-
-	public Game addGame(Game game) {
-		getGames().add(game);
-		game.setUser(this);
-
-		return game;
-	}
-
-	public Game removeGame(Game game) {
-		getGames().remove(game);
-		game.setUser(null);
-
-		return game;
 	}
 
 }
