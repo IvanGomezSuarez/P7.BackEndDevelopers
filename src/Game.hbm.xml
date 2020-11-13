@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 12 nov. 2020 17:46:55 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="modelo.Game" table="GAME">
+        <id name="idGame" type="long">
+            <column name="IDGAME" />
+            <generator class="assigned" />
+        </id>
+        <property name="score" type="int">
+            <column name="SCORE" />
+        </property>
+        <property name="users_username1" type="java.lang.String">
+            <column name="USERS_USERNAME1" />
+        </property>
+    </class>
+</hibernate-mapping>

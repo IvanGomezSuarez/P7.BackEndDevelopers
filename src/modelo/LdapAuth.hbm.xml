@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 12 nov. 2020 17:46:55 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="modelo.LdapAuth" table="LDAPAUTH">
+        <id name="servidor" type="java.lang.String" access="field">
+            <column name="SERVIDOR" />
+            <generator class="assigned" />
+        </id>
+        <property name="usuario" type="java.lang.String">
+            <column name="USUARIO" />
+        </property>
+        <property name="clave" type="java.lang.String" access="field">
+            <column name="CLAVE" />
+        </property>
+        <property name="dn" type="java.lang.String" access="field">
+            <column name="DN" />
+        </property>
+        <property name="tipoAuth" type="java.lang.String" access="field">
+            <column name="TIPOAUTH" />
+        </property>
+        <property name="autenticado" type="boolean">
+            <column name="AUTENTICADO" />
+        </property>
+        <property name="dc" type="javax.naming.directory.DirContext" access="field">
+            <column name="DC" />
+        </property>
+    </class>
+</hibernate-mapping>
