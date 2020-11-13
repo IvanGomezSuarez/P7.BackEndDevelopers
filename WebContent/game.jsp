@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import = "tests.WordTest %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,7 +60,7 @@
     
     
     <script>
-    var words = ['Develoteca','cursos','ayuda','Videos','Tutoriales','Plugins'];
+    var words = [<%= new WordTest.devuelvePalabras() %>];
     var gamePuzzle = wordfindgame.create(words, '#juego', '#Palabras'); 
         
     var puzzle = wordfind.newPuzzle(words,{height: 18, width:18, fillBlanks: false});

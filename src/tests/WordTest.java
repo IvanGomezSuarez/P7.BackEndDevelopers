@@ -7,6 +7,8 @@ import service.WordService;
 public class WordTest {
 	 
     public static void main(String[] args) {
+    	devuelvePalabras();
+        /*
         WordService wordService = new WordService();
         Word word1 = new Word("Develoteca");
         Word word2 = new Word("Plugins");
@@ -22,5 +24,15 @@ public class WordTest {
         }
         System.out.println("*** Persist - end ***");
          System.exit(0);
+         */
     }
+    
+    public static List<Word> devuelvePalabras() {
+    	WordService wordservice = new WordService();
+    	List<Word> palabras = wordservice.findAll();
+    	for (Word w : palabras) {
+            System.out.println("'"+ w.toString()+"'"+",");
+        }
+    	return palabras;
+    	}
 }

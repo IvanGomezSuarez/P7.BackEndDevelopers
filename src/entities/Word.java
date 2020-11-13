@@ -32,5 +32,10 @@ public class Word implements Serializable {
 	public void setIdword(String idword) {
 		this.idword = idword;
 	}
+	
+	@Override
+    public String toString() {
+        return this.idword;
+    }
 
 }
