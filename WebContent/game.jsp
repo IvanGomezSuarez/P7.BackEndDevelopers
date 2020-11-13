@@ -64,9 +64,12 @@
     <% System.out.print("Compruebo que java se ejecute"); %>
     <jsp:useBean id="link" scope="application" class = "service.WordService" /> 
     <script>
+    //La respuesta del scriplet nos da ya los corchetes, igual no hace falta ponerlos en words = []
+    //TO DO - Conseguir que muestre la información porque ya funciona
     var words = [
     <% WordService t = new WordService(); 
     t.devuelvePalabras();
+    System.out.println("ArrayList de t.devuelvePalabras() " + t.devuelvePalabras());
     %>
     ];
     var gamePuzzle = wordfindgame.create(words, '#juego', '#Palabras'); 

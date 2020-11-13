@@ -1,5 +1,6 @@
 package service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.WordDao;
@@ -56,14 +57,14 @@ public class WordService {
         return wordDao;
     }
     
-    public List<Word> devuelvePalabras() {
+    public ArrayList<String> devuelvePalabras() {
     	WordService wordservice = new WordService();
+    	ArrayList<String> words = new ArrayList<String>();
     	List<Word> palabras = wordservice.findAll();
-    	
     	for (Word w : palabras) {
-            System.out.println("'"+ w.toString()+"'"+",");
+    		words.add('"'+ w.toString()+'"');
         }
-    	return palabras;
+		return words;
     	}
     
     
