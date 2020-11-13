@@ -1,3 +1,5 @@
+package tests;
+
 import java.util.List;
 import entities.User;
 import service.UserService;

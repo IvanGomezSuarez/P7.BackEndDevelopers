@@ -1,3 +1,5 @@
+package tests;
+
 import java.util.List;
 import entities.Game;
 import service.GameService;
@@ -6,8 +8,8 @@ public class GameTest {
 	 
     public static void main(String[] args) {
         GameService gameService = new GameService();
-        Game game1 = new Game("3", 31, "Mariano");
-        Game game2 = new Game("2", 78, "Juanito");
+        Game game1 = new Game("1", 31, "cristianvia");
+        Game game2 = new Game("2", 78, "juanito");
         System.out.println("*** Persist - start ***");
         gameService.persist(game1);
         gameService.persist(game2);

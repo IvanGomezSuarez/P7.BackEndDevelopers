@@ -52,7 +52,7 @@ public class UserService {
     	userDao.closeCurrentSessionwithTransaction();
     }
  
-    public UserDao bookDao() {
+    public UserDao userDao() {
         return userDao;
     }
 }

@@ -15,5 +15,7 @@
    		<property name="hibernate.current_session_context_class">thread</property>
    		<mapping class="entities.Game"/>
    		<mapping class="entities.User"/>
+   		<mapping class="entities.Letter"/>
+   		<mapping class="entities.Word"/>
     </session-factory>
 </hibernate-configuration>

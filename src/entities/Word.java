@@ -15,9 +15,14 @@ public class Word implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="idword")
 	private String idword;
 
 	public Word() {
+	}
+	
+	public Word(String idword) {
+		this.idword = idword;
 	}
 
 	public String getIdword() {

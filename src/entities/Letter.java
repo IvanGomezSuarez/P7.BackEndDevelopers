@@ -14,9 +14,14 @@ public class Letter implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="idletter")
 	private String idletter;
 
-	public Letter() {
+	public Letter() {		
+	}
+	
+	public Letter(String idletter) {
+		this.idletter = idletter;
 	}
 
 	public String getIdletter() {
