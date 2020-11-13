@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.LdapAuth;
+import service.LdapAuth;
 
 import java.util.Hashtable;
 import javax.naming.Context;
