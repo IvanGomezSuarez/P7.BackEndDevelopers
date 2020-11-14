@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class="container">
-		<form action="Servlet" method= "POST">
+		<form action="Servlet" method= "post">
 			<div class="form-group text-center">
 				<img src="img/user.png" height="90" width="90" />
 				<p>
